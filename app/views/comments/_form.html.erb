@@ -1,19 +1,27 @@
-<%= form_with model: [ article, article.comments.build ] do |form| %>
-  <p>
+<%= form_with(model: [article, comment], local: true) do |form| %>
+  <% if comment.errors.any? %>
+    <div style="color: red;">
+      <h2><%= pluralize(comment.errors.count, "error") %> prevented this comment from being saved:</h2>
+      <ul>
+        <% comment.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div>
     <%= form.label :commenter %><br>
     <%= form.text_field :commenter %>
-  </p>
-  <p>
+  </div>
+
+  <div>
     <%= form.label :body %><br>
     <%= form.text_area :body %>
-  </p><br>
+  </div>
 
-  <p>
-    <%= form.label :status %><br>
-    <%= form.select :status, Visible::VALID_STATUSES, selected: 'public' %>
-  </p><br>
+  <div>
+    <%= form.submit "Post Comment" %>
+  </div>
 
-  <p>
-    <%= form.submit %>
-  </p>
 <% end %>

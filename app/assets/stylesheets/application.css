@@ -36,3 +36,15 @@
 .flash.error {
   background-color: #ff9800;
 }
+
+.all-comments {
+  display:flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.article-body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
