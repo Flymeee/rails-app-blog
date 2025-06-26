@@ -1,10 +1,10 @@
-<h2 class="all-comments">All Comments for "<%= @article.title %>"</h2>
-<h3 class="article-body"> <%= @article.body %> </h3>
+<h2 class="all-comments">Showing comments for "<%= @article.title %>"</h2>
+<p class="article-body"> <%= @article.body %> </p>
+<hr>
 
 <% @comments.each do |comment| %>
 
   <div class="comment">
-  <hr>
     <p><strong>By:</strong> <%= comment.commenter %></p>
     <p><%= comment.body %></p>
     <%= link_to "Edit", edit_article_comment_path(@article, comment) %>&nbsp; &nbsp; 
@@ -12,9 +12,12 @@
                     turbo_method: :delete,
                     turbo_confirm: "Are you sure?"
                   } %></li>
+    <hr>
   </div>
   
 <% end %>
 <br><br><br><br>
+<center>
 <%= link_to "Home", articles_path  %> &nbsp; &nbsp;
-<%= link_to "Back", article_path(@article) %>
+<%= link_to "Post a new comment", article_path(@article) %>
+</center>

@@ -10,7 +10,7 @@ class CommentsController < ApplicationController
     @comment = @article.comments.build(comment_params)
 
     if @comment.save
-      redirect_to article_path(@article), notice: "Comment posted!"
+      redirect_to article_comments_path(@article), notice: "Comment posted!"
     else
       render "articles/show", status: :unprocessable_entity
     end
